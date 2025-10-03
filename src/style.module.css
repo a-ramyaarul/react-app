@@ -1,0 +1,150 @@
+
+.header {
+  margin: 0%;
+  font-size: medium;
+  font-weight: bolder;
+  background-color: rgb(31, 146, 37);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body {
+  margin: 0%;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(12, 7, 7);
+  margin: 0px 10px;
+}
+
+.link:hover {
+  color: rgb(252, 249, 249);
+  text-decoration: underline;
+}
+
+
+.app {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #020202;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark {
+  background-color: #150d0d;
+  color: #fff;
+}
+
+
+.content {
+  padding: 20px;
+}
+
+
+.app.dark .link {
+  color: #ffffff;
+}
+
+.app.dark .link:hover {
+  color: #ffcccc;
+}
+
+
+.incident-item {
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  margin-left: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #f44336;
+  color: #fff;
+}
+
+.app.dark .delete-btn {
+  background-color: #d32f2f;
+}
+.form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input, .select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100px;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+.app.dark .input,
+.app.dark .select {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.incidentList {
+  display: flex;
+  flex-wrap: wrap; 
+    gap: 15px; 
+}
+
+
+.incident-item, .box {
+  flex: 1 1 250px; 
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark .incident-item,
+.app.dark .box {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+.delete-btn, .box button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f44336;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover, .box button:hover {
+  background-color: #d32f2f;
+}
+
