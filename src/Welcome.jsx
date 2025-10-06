@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import styles from "./style.module.css";
 function Welcome() {
   const [joke, setJoke] = useState("");
 
@@ -24,7 +24,7 @@ function Welcome() {
 
   return (
     <>
-      <h2>   Welcome!</h2>
+      <h2 className={styles.welcome}>  Welcome to my page </h2>
       <h5>{joke}</h5>
     </>
   );
