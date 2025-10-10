@@ -12,6 +12,8 @@ function reducer(state, action) {
       return [...state, action.payload];
     case "DELETE":
       return state.filter(i => i.incident_id !== action.payload);
+    case "UPDATE":
+      return state.map(i => (i.incident_id === action.payload.incident_id ? action.payload : i));
     default:
       return state;
   }
@@ -23,12 +25,13 @@ function Home() {
 
   const handleDelete = id => dispatch({ type: "DELETE", payload: id });
   const handleAdd = incident => dispatch({ type: "ADD", payload: incident });
+  const handleUpdate = incident => dispatch({ type: "UPDATE", payload: incident });
 
   const user = { prefix: "Ms.", firstName: "Ramya", lastName: "Arul" };
   const date = new Date();
 
   return (
-    <div className={`${styles.app} ${darkMode ? styles.dark : ""}`}>
+    <div className={`${styles.app} ${darkMode ? styles.dark : styles.light}`}>
       <header className={styles.header}>
         <span>
             Welcome {user.prefix} {user.firstName} {user.lastName}
@@ -62,7 +65,7 @@ function Home() {
           <Route path="/" element={<Welcome />} />
           <Route
             path="/incidents"
-            element={<IncidentList incidents={incidents} onDelete={handleDelete} onAdd={handleAdd} />}
+            element={<IncidentList incidents={incidents} onDelete={handleDelete} onAdd={handleAdd} onUpdate={handleUpdate} />}
           />
         </Routes>
       </main>

@@ -3,8 +3,10 @@ import Incident from "./Incident";
 import styles from "./style.module.css";
 import { DarkModeContext } from "./DarkModeContext";
 
-function IncidentList({ incidents, onDelete, onAdd }) {
+function IncidentList({ incidents, onDelete, onAdd, onUpdate }) {
   const { darkMode } = useContext(DarkModeContext);
+
+  const [editingId, setEditingId] = useState(null);
 
   const [newIncident, setNewIncident] = useState({
     incident_id: "",
@@ -20,12 +22,18 @@ function IncidentList({ incidents, onDelete, onAdd }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onAdd(newIncident);
+    if (editingId && onUpdate) {
+      onUpdate(newIncident);
+      setEditingId(null);
+    } else {
+      onAdd(newIncident);
+    }
+
     setNewIncident({ incident_id: "", title: "", priority: "Medium", status: "open" });
   };
 
   return (
-    <div className={darkMode ? styles.dark : ""}>
+    <div className={darkMode ? styles.dark : styles.light}>
       <form onSubmit={handleSubmit} className={styles.form}>
         {["incident_id", "title"].map(field => (
           <label key={field}>
@@ -53,7 +61,7 @@ function IncidentList({ incidents, onDelete, onAdd }) {
         <label>
           Status
           <select name="status" value={newIncident.status} onChange={handleChange} className={styles.select}>
-            {["open", "closed"].map(s => (
+            {["open", "closed","In Progress"].map(s => (
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
@@ -68,6 +76,10 @@ function IncidentList({ incidents, onDelete, onAdd }) {
             key={incident.incident_id}
             incident={incident}
             onDelete={() => onDelete(incident.incident_id)}
+            onEdit={() => {
+              setEditingId(incident.incident_id);
+              setNewIncident(incident);
+            }}
           />
         ))}
       </div>
