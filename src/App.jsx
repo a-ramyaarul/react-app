@@ -3,6 +3,7 @@ import { DarkModeProvider } from "./DarkModeContext";
 import { BrowserRouter } from "react-router-dom";
 
 function App() {
+  
   return (
     <BrowserRouter>
       <DarkModeProvider>

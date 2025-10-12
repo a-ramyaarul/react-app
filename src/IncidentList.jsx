@@ -17,15 +17,19 @@ function IncidentList({ incidents, onDelete, onAdd, onUpdate }) {
 
   const handleChange = e => {
     const { name, value } = e.target;
+
     setNewIncident(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (editingId && onUpdate) {
       onUpdate(newIncident);
       setEditingId(null);
-    } else {
+    } 
+    
+    else {
       onAdd(newIncident);
     }
 
@@ -33,6 +37,7 @@ function IncidentList({ incidents, onDelete, onAdd, onUpdate }) {
   };
 
   return (
+
     <div className={darkMode ? styles.dark : styles.light}>
       <form onSubmit={handleSubmit} className={styles.form}>
         {["incident_id", "title"].map(field => (
@@ -47,12 +52,15 @@ function IncidentList({ incidents, onDelete, onAdd, onUpdate }) {
               required
             />
           </label>
+
         ))}
 
         <label>
           Priority
+
           <select name="priority" value={newIncident.priority} onChange={handleChange} className={styles.select}>
             {["Low", "Medium", "High", "Critical"].map(p => (
+
               <option key={p} value={p}>{p}</option>
             ))}
           </select>
@@ -60,22 +68,28 @@ function IncidentList({ incidents, onDelete, onAdd, onUpdate }) {
 
         <label>
           Status
+
           <select name="status" value={newIncident.status} onChange={handleChange} className={styles.select}>
             {["open", "closed","In Progress"].map(s => (
+
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
         </label>
 
         <button type="submit" className={styles.submitBtn}>Add Incident</button>
+
       </form>
 
       <div className={styles.incidentList}>
+
         {incidents.map(incident => (
+
           <Incident
             key={incident.incident_id}
             incident={incident}
             onDelete={() => onDelete(incident.incident_id)}
+            
             onEdit={() => {
               setEditingId(incident.incident_id);
               setNewIncident(incident);

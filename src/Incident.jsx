@@ -14,7 +14,7 @@ function Incident({ incident, onDelete, onEdit }) {
         <li>Priority: {incident.priority}</li>
         <div>
           <Button sx={{mt:'50px'}} variant='contained' color="error" onClick={onDelete}>Delete</Button>
-          <Button sx={{mt:'50px', ml:'20px'}} variant='contained' color="secondary" style={{ marginLeft: 20 }}>Edit</Button>
+          <Button sx={{mt:'50px'}} variant='contained' color="secondary" className={styles.edit} onClick={onEdit}>Edit</Button>
         </div>
       </ul>
     </div>

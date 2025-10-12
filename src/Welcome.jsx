@@ -13,6 +13,8 @@ function Welcome() {
       const data = await res.json();
       setJoke(`${data.setup} - ${data.punchline}`);
         } catch (error) {
+
+          if (error.name === 'AbortError') return;
           console.error("Error fetching joke:", error);
         }
     }
@@ -25,7 +27,7 @@ function Welcome() {
   return (
     <>
       <h2 className={styles.welcome}>  Welcome to my page </h2>
-      <h5>{joke}</h5>
+      <h5 className={styles.joke}>Joke: {joke}</h5>
     </>
   );
 }

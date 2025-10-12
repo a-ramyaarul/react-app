@@ -34,21 +34,26 @@ function Home() {
     <div className={`${styles.app} ${darkMode ? styles.dark : styles.light}`}>
       <header className={styles.header}>
         <span>
-            Welcome {user.prefix} {user.firstName} {user.lastName}
+
+            I'm {user.prefix} {user.firstName} {user.lastName}
         </span>
-        <span>
+        <span className={styles.time}>
           Time: {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
         </span>
         <nav>
           <ul className={styles.list}>
             <li className={styles.listItem}>
               <Link to="/" className={styles.link}>
+
                 Home
+
               </Link>
             </li>
             <li className={styles.listItem}>
               <Link to="/incidents" className={styles.link}>
+
                 Incidents
+
               </Link>
             </li>
             <li className={styles.listItem}>
@@ -62,9 +67,11 @@ function Home() {
 
       <main className={styles.content}>
         <Routes>
+
           <Route path="/" element={<Welcome />} />
           <Route
             path="/incidents"
+
             element={<IncidentList incidents={incidents} onDelete={handleDelete} onAdd={handleAdd} onUpdate={handleUpdate} />}
           />
         </Routes>
